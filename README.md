@@ -12,7 +12,7 @@ SnowHead Mar 2021
 Shiura on [thingiverse](https://www.thingiverse.com/thing:4781365) designed a fascinating hollow clock.<br>
 The original is controlled by an Arduino. The firmware here was adapted to an ESP8266 and for the use of the [WTA-timeservice](http://worldtimeapi.org) instead of NTP. So there normally are no firmware-modifications necessary to adapt the timezone and DST because they will be investigated out of the public IP of the request. For special cases (f.e. the use of a foreign proxy server) the timezone can be selected manually by replacing "ip" with the wished [timezone](http://worldtimeapi.org/timezone) in WTAClient.cpp.<br>
 <br>
-Used libraries:<br>
+##Used libraries:<br>
 - ArduinoJson 5.13.2<br>
 - DNSServer<br>
 - DoubleResetDetector<br>
@@ -21,8 +21,6 @@ Used libraries:<br>
 - ESP8266WiFi<br>
 - UrsADC<br>
 - WiFiManager<br> 
-
-The current version only works with arduino core 2.74 and below. Compatibility to newer cores is in progress.
 
 Some modified mechanic parts are described [here](https://thingiverse.com/thing:4808950) and [here](https://thingiverse.com/thing:4802771)<br>
 See informations to arduino-based version on [thingiverse](https://www.thingiverse.com/thing:4781365)

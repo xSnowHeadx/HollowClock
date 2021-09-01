@@ -5,6 +5,7 @@
 #include <WiFiManager.h> //https://github.com/tzapu/WiFiManager
 #include <ESP8266HTTPClient.h>
 #include <ArduinoJson.h>
+#include "WiFiClient.h"
 
 char wifiManagerAPName[] = "HollowCK";
 char wifiManagerAPPassword[] = "HollowCK";
@@ -19,6 +20,7 @@ DoubleResetDetector drd(DRD_TIMEOUT, DRD_ADDRESS);
 #include "WTAClient.h"
 #define WTAServerName  "http://worldtimeapi.org/api/"
 HTTPClient http;
+WiFiClient wifiClient;
 String payload;
 bool military = true;
 
@@ -124,7 +126,7 @@ void WTAClient::AskCurrentEpoch()
 	Serial.println("AskCurrentEpoch called");
 
 	strcat(url, timezone);
-	http.begin(url);
+	http.begin(wifiClient, url);
 	httpCode = http.GET();
 
 	payload = "";
