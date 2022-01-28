@@ -155,7 +155,7 @@ unsigned long WTAClient::ReadCurrentEpoch()
 	else
 	{
 		const size_t capacity = JSON_OBJECT_SIZE(15) + 400;
-		DynamicJsonBuffer jsonBuffer(capacity);
+		DynamicJsonDocument jsonDocument(capacity);
 
 		error_getTime = true;
 		Serial.print("time answer received, length=");
@@ -163,30 +163,30 @@ unsigned long WTAClient::ReadCurrentEpoch()
 		// We've received a time, read the data from it
 		// the timedate are JSON values
 
-		JsonObject &root = jsonBuffer.parseObject(payload.c_str());
-		if (!root.success())
+		auto error = deserializeJson(jsonDocument, payload.c_str());
+		if (error)
 		{
 			Serial.println("parseObject() failed");
 		}
 		else
 		{
-//      int week_number = root["week_number"]; // 31
-//      const char* utc_offset = root["utc_offset"]; // "-04:00"
-//      const char* utc_datetime = root["utc_datetime"]; // "2019-08-01T16:58:40.68279+00:00"
-			long unixtime = root["unixtime"]; // 1564678720
-//      const char* timezone = root["timezone"]; // "America/New_York"
-			int raw_offset = root["raw_offset"]; // -18000
-//      const char* dst_until = root["dst_until"]; // "2019-11-03T06:00:00+00:00"
-			int dst_offset = root["dst_offset"]; // 3600
-//      const char* dst_from = root["dst_from"]; // "2019-03-10T07:00:00+00:00"
-//      bool dst = root["dst"]; // true
-//      int day_of_year = root["day_of_year"]; // 213
-//      int day_of_week = root["day_of_week"]; // 4
-//      const char* datetime = root["datetime"]; // "2019-08-01T12:58:40.682790-04:00"
-//      const char* client_ip = root["client_ip"]; // "23.235.227.109"
-//      const char* abbreviation = root["abbreviation"]; // "EDT"     
+//      	int week_number = jsonDocument["week_number"]; // 31
+//      	const char* utc_offset = jsonDocument["utc_offset"]; // "-04:00"
+//      	const char* utc_datetime = jsonDocument["utc_datetime"]; // "2019-08-01T16:58:40.68279+00:00"
+			long unixtime = jsonDocument["unixtime"]; // 1564678720
+//      	const char* timezone = jsonDocument["timezone"]; // "America/New_York"
+			int raw_offset = jsonDocument["raw_offset"]; // -18000
+//      	const char* dst_until = jsonDocument["dst_until"]; // "2019-11-03T06:00:00+00:00"
+			int dst_offset = jsonDocument["dst_offset"]; // 3600
+//      	const char* dst_from = jsonDocument["dst_from"]; // "2019-03-10T07:00:00+00:00"
+//      	bool dst = jsonDocument["dst"]; // true
+//      	int day_of_year = jsonDocument["day_of_year"]; // 213
+//      	int day_of_week = jsonDocument["day_of_week"]; // 4
+//      	const char* datetime = jsonDocument["datetime"]; // "2019-08-01T12:58:40.682790-04:00"
+//      	const char* client_ip = jsonDocument["client_ip"]; // "23.235.227.109"
+//      	const char* abbreviation = jsonDocument["abbreviation"]; // "EDT"
 
-			// now convert WTA time into everyday time:
+// now convert WTA time into everyday time:
 #if (DEBUG)
 			Serial.print("Unix time = ");
 #endif

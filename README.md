@@ -13,7 +13,7 @@ Shiura on [thingiverse](https://www.thingiverse.com/thing:4781365) designed a fa
 The original is controlled by an Arduino. The firmware here was adapted to an ESP8266 and for the use of the [WTA-timeservice](http://worldtimeapi.org) instead of NTP. So there normally are no firmware-modifications necessary to adapt the timezone and DST because they will be investigated out of the public IP of the request. For special cases (f.e. the use of a foreign proxy server) the timezone can be selected manually by replacing "ip" with the wished [timezone](http://worldtimeapi.org/timezone) in WTAClient.cpp.<br>
 <br>
 ##Used libraries:<br>
-- ArduinoJson 5.13.2<br>
+- ArduinoJson<br>
 - DNSServer<br>
 - DoubleResetDetector<br>
 - ESP8266HTTPClient<br>
