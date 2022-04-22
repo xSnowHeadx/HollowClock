@@ -27,7 +27,13 @@ unsigned long locEpoch = 0, netEpoch = 0, start_time;
 
 // ports used to control the stepper motor
 // if your motor rotate to the opposite direction,
-// change the order as {15, 13, 12, 14};
+// change the order to {15, 13, 12, 14};
+// ESP	 Stepper
+// D5 -> IN1
+// D6 -> IN2
+// D7 -> IN3
+// D8 -> IN4
+
 int port[4] =
 { 14, 12, 13, 15 };
 
