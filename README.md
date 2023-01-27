@@ -19,7 +19,6 @@ The original is controlled by an Arduino. The firmware here was adapted to an ES
 - ESP8266HTTPClient<br>
 - ESP8266WebServer<br>
 - ESP8266WiFi<br>
-- UrsADC<br>
 - WiFiManager<br> 
 
 Some modified mechanic parts are described [here](https://www.prusaprinters.org/prints/140533-hollow-clock-remix-uses-internet-time-with-esp8266)<br>
